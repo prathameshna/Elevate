@@ -1,0 +1,57 @@
+name: elevate
+description: "Elevate - Personal Productivity Dashboard"
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State Management
+  flutter_riverpod: ^2.6.1
+  riverpod_annotation: ^2.6.1
+
+  # Navigation
+  go_router: ^14.8.1
+
+  # Dependency Injection
+  get_it: ^8.0.3
+  injectable: ^2.5.0
+
+  # Local Storage
+  hive_flutter: ^1.1.0
+
+  # Networking
+  dio: ^5.8.0+1
+
+  # Animations
+  flutter_animate: ^4.5.2
+  animations: ^2.0.11
+
+  # Shimmer skeleton loading
+  shimmer: ^3.0.0
+
+  # Icons & UI
+  cupertino_icons: ^1.0.8
+  google_fonts: ^6.2.1
+  flutter_staggered_grid_view: ^0.7.0
+
+  # Web View
+  flutter_inappwebview: ^6.1.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  build_runner: ^2.4.14
+  riverpod_generator: ^2.6.5
+  injectable_generator: ^2.7.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/

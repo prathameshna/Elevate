@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Elevate - Notepad</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=DM+Serif+Display&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#1b1c1a",
+                        "primary-container": "#2d5be3",
+                        "surface-container-low": "#f4f3f0",
+                        "surface": "#FFFFFF",
+                        "secondary-fixed-dim": "#cac6c2",
+                        "primary-fixed": "#dce1ff",
+                        "error": "#ba1a1a",
+                        "tertiary": "#524f49",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#efeeeb",
+                        "accent-soft": "#EEF2FC",
+                        "secondary": "#605e5b",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#003ab3",
+                        "primary-fixed-dim": "#b6c4ff",
+                        "danger": "#A32D2D",
+                        "on-secondary-container": "#666461",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e3e2df",
+                        "tertiary-fixed": "#e7e2da",
+                        "on-secondary-fixed-variant": "#484644",
+                        "on-surface": "#1b1c1a",
+                        "on-tertiary-fixed-variant": "#494641",
+                        "secondary-container": "#e6e2de",
+                        "surface-dim": "#F0EFE9",
+                        "inverse-on-surface": "#f2f1ee",
+                        "tertiary-fixed-dim": "#cbc6bf",
+                        "outline": "#747686",
+                        "on-secondary-fixed": "#1c1b19",
+                        "on-primary-fixed": "#001550",
+                        "border-subtle": "rgba(0,0,0,0.08)",
+                        "accent-deep": "#1A3DA0",
+                        "warn": "#854F0B",
+                        "primary": "#0041c6",
+                        "inverse-surface": "#2f312f",
+                        "surface-bright": "#faf9f6",
+                        "success-soft": "#EAF3DE",
+                        "surface-tint": "#1f51da",
+                        "on-tertiary-container": "#ebe6de",
+                        "border-strong": "rgba(0,0,0,0.15)",
+                        "inverse-primary": "#b6c4ff",
+                        "on-primary-container": "#e2e5ff",
+                        "tertiary-container": "#6a6761",
+                        "secondary-fixed": "#e6e2de",
+                        "on-tertiary-fixed": "#1d1b17",
+                        "outline-variant": "#c4c5d7",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#e3e2df",
+                        "on-surface-variant": "#434655",
+                        "background": "#faf9f6",
+                        "warn-soft": "#FAEEDA",
+                        "surface-container-high": "#e9e8e5",
+                        "on-tertiary": "#ffffff",
+                        "success": "#3B6D11",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "padding-card-sm": "12px",
+                        "section-gap": "24px",
+                        "gap-xs": "4px",
+                        "touch-target": "56px",
+                        "gap-sm": "8px",
+                        "padding-card": "16px",
+                        "unit": "4px",
+                        "margin-screen": "20px"
+                    },
+                    "fontFamily": {
+                        "label-lg": ["DM Sans"],
+                        "badge": ["DM Sans"],
+                        "label-sm": ["DM Sans"],
+                        "headline-md": ["DM Serif Display"],
+                        "label-md": ["DM Sans"],
+                        "headline-lg": ["DM Serif Display"],
+                        "headline-sm": ["DM Serif Display"],
+                        "score-xl": ["DM Serif Display"],
+                        "body-md": ["DM Sans"]
+                    },
+                    "fontSize": {
+                        "label-lg": ["13px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "badge": ["8px", {"lineHeight": "10px", "fontWeight": "500"}],
+                        "label-sm": ["9px", {"lineHeight": "11px", "letterSpacing": "0.08em", "fontWeight": "500"}],
+                        "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-md": ["10px", {"lineHeight": "12px", "letterSpacing": "0.12em", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "400"}],
+                        "headline-sm": ["20px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "score-xl": ["48px", {"lineHeight": "56px", "fontWeight": "400"}],
+                        "body-md": ["12px", {"lineHeight": "18px", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #F7F6F3;
+            font-family: 'DM Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            min-height: max(884px, 100dvh);
+        }
+        .masonry-grid {
+            column-count: 2;
+            column-gap: 16px;
+        }
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 24px;
+            opacity: 0;
+            transform: translateY(4px);
+        }
+        .note-card {
+            border: 0.5px solid rgba(0,0,0,0.06);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
+        }
+        .note-card:active {
+            transform: scale(0.98) !important;
+        }
+        .unread-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #2D5BE3;
+            border-radius: 50%;
+            position: absolute;
+            top: 14px;
+            right: 14px;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            font-size: 24px;
+        }
+
+        /* Physical Sticking Styles */
+        .sticking-element {
+            position: absolute;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .tape-strip {
+            width: 38px;
+            height: 11px;
+            background: rgba(255, 255, 255, 0.52);
+            backdrop-filter: blur(2px);
+            border-radius: 1px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+        .dark .tape-strip {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Style 1: Tape Center */
+        .style-tape-center .note-card { padding-top: 24px !important; }
+        .style-tape-center .tape-strip {
+            top: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Style 2: Tape Corners */
+        .style-tape-corners .note-card { padding-top: 26px !important; }
+        .style-tape-corners .tape-1 {
+            width: 32px;
+            height: 10px;
+            top: -3px;
+            left: -8px;
+            transform: rotate(-35deg);
+        }
+        .style-tape-corners .tape-2 {
+            width: 32px;
+            height: 10px;
+            top: -3px;
+            right: -8px;
+            transform: rotate(35deg);
+        }
+
+        /* Style 3: Paperclip */
+        .style-paperclip .note-card { padding-top: 24px !important; }
+        .style-paperclip .clip-svg {
+            top: -8px;
+            left: 12px;
+            width: 14px;
+            height: 28px;
+        }
+
+        /* Style 4: Push Pin Center */
+        .style-pin-center .note-card { padding-top: 24px !important; }
+        .pin-head {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            position: relative;
+            box-shadow: inset -2px -2px 3px rgba(0,0,0,0.2), 1px 2px 3px rgba(0,0,0,0.15);
+        }
+        .pin-head::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 3px;
+            height: 3px;
+            background: rgba(255,255,255,0.6);
+            border-radius: 50%;
+        }
+        .style-pin-center .pin-container {
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Style 5: Push Pin Corners */
+        .style-pin-corners .note-card { padding-top: 24px !important; }
+        .style-pin-corners .pin-1 { top: -4px; left: 12px; }
+        .style-pin-corners .pin-2 { top: -4px; right: 12px; }
+
+        @keyframes fadeInNote {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .note-reveal {
+            animation: fadeInNote 180ms ease-out forwards;
+        }
+    </style>
+</head>
+<body class="min-h-screen text-on-surface">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-40 bg-[#F7F6F3]/90 backdrop-blur-md flex justify-between items-center px-5 h-16 w-full">
+<div class="flex items-center gap-4">
+<div class="relative flex items-center justify-center w-10 h-10 hover:bg-surface-container transition-colors rounded-full cursor-pointer">
+<span class="material-symbols-outlined">menu</span>
+<div class="unread-dot"></div>
+</div>
+<h1 class="font-headline-md text-headline-md text-on-surface tracking-tight">Notepad</h1>
+</div>
+<div class="flex items-center gap-1">
+<button class="w-10 h-10 flex items-center justify-center hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined">picture_as_pdf</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center hover:bg-surface-container rounded-full transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</header>
+<main class="px-5 pb-24">
+<!-- Sort Row -->
+<div class="flex items-center gap-1 py-4 mb-2 text-on-surface-variant cursor-pointer group">
+<span class="font-label-lg text-label-lg text-[#8E8B86]">Date modified</span>
+<span class="material-symbols-outlined text-[18px] text-[#8E8B86] group-hover:translate-y-0.5 transition-transform">sort</span>
+</div>
+<!-- Notes Masonry Grid -->
+<div class="masonry-grid" id="notes-grid">
+<!-- Note 1: Morning Rituals -->
+<div class="masonry-item">
+<div class="note-card bg-[#F9F8FF] rounded-[14px] p-4 shadow-sm min-h-[140px]">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Reflections on the morning ritual. Soft light hitting the desk at 6:00 AM. The stillness is where the best ideas are born.</p>
+</div>
+<div class="mt-2 px-1">
+<h3 class="font-headline-sm text-[13px] text-on-surface leading-tight">Morning Rituals</h3>
+<p class="font-label-sm text-label-sm text-secondary mt-0.5 uppercase tracking-wider">Oct 12, 2023</p>
+</div>
+</div>
+<!-- Note 2: Kitchen Supplies -->
+<div class="masonry-item">
+<div class="note-card bg-[#FFFAF5] rounded-[14px] p-4 shadow-sm min-h-[100px]">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Grocery list for the week: Sourdough bread, Organic honey, Espresso beans, Sea salt flakes.</p>
+</div>
+<div class="mt-2 px-1">
+<h3 class="font-headline-sm text-[13px] text-on-surface leading-tight">Kitchen Supplies</h3>
+<p class="font-label-sm text-label-sm text-secondary mt-0.5 uppercase tracking-wider">Oct 11, 2023</p>
+</div>
+</div>
+<!-- Note 3: Design Principles -->
+<div class="masonry-item">
+<div class="note-card bg-[#FAFAF8] rounded-[14px] p-4 shadow-sm min-h-[180px]">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">The new interface should prioritize cognitive ergonomics. Minimalist aesthetic values space and subtle contrasts over aggressive branding elements.</p>
+</div>
+<div class="mt-2 px-1">
+<h3 class="font-headline-sm text-[13px] text-on-surface leading-tight">Design Principles</h3>
+<p class="font-label-sm text-label-sm text-secondary mt-0.5 uppercase tracking-wider">Oct 10, 2023</p>
+</div>
+</div>
+<!-- Note 4: Travel Wishlist -->
+<div class="masonry-item">
+<div class="note-card bg-[#F9FDF6] rounded-[14px] p-4 shadow-sm min-h-[160px]">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Ideas for the next escape: <br/>1. Fjords of Norway <br/>2. Swiss Alps in Summer <br/>3. Kyoto Zen Gardens</p>
+</div>
+<div class="mt-2 px-1">
+<h3 class="font-headline-sm text-[13px] text-on-surface leading-tight">Travel Wishlist</h3>
+<p class="font-label-sm text-label-sm text-secondary mt-0.5 uppercase tracking-wider">Oct 08, 2023</p>
+</div>
+</div>
+<!-- Note 5: Project Sync -->
+<div class="masonry-item">
+<div class="note-card bg-[#F9F8FF] rounded-[14px] p-4 shadow-sm min-h-[120px]">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Meeting notes from Thursday: Finalize the layout grid, test typography pairing at 22px titles.</p>
+</div>
+<div class="mt-2 px-1">
+<h3 class="font-headline-sm text-[13px] text-on-surface leading-tight">Project Sync</h3>
+<p class="font-label-sm text-label-sm text-secondary mt-0.5 uppercase tracking-wider">Oct 05, 2023</p>
+</div>
+</div>
+<!-- Note 6: Inspiration -->
+<div class="masonry-item">
+<div class="note-card bg-[#FAFAF8] rounded-[14px] p-4 shadow-sm min-h-[130px]">
+<p class="font-body-md text-body-md text-on-surface-variant italic leading-relaxed">"The details are not the details. They make the design." <br/>— Charles Eames</p>
+</div>
+<div class="mt-2 px-1">
+<h3 class="font-headline-sm text-[13px] text-on-surface leading-tight">Inspiration</h3>
+<p class="font-label-sm text-label-sm text-secondary mt-0.5 uppercase tracking-wider">Oct 02, 2023</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-6 right-6 w-14 h-14 bg-[#2D5BE3] text-white rounded-full flex items-center justify-center shadow-lg active:scale-90 transition-transform duration-100 z-50">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">edit</span>
+</button>
+<!-- Navigation Drawer -->
+<div class="fixed inset-0 bg-black/20 opacity-0 pointer-events-none transition-opacity duration-300 z-[60]" id="drawer-overlay"></div>
+<aside class="fixed inset-y-0 left-0 w-72 bg-surface shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out z-[70] rounded-r-xl" id="nav-drawer">
+<div class="p-6">
+<div class="mb-8">
+<span class="font-headline-lg text-headline-lg text-primary">Elevate</span>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-4 bg-primary-container text-on-primary-container rounded-full px-4 py-3" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-lg text-label-lg">All Notes</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-3 transition-colors" href="#">
+<span class="material-symbols-outlined">folder</span>
+<span class="font-label-lg text-label-lg">Notebooks</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-3 transition-colors" href="#">
+<span class="material-symbols-outlined">archive</span>
+<span class="font-label-lg text-label-lg">Archive</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-3 transition-colors" href="#">
+<span class="material-symbols-outlined">delete</span>
+<span class="font-label-lg text-label-lg">Trash</span>
+</a>
+</nav>
+</div>
+</aside>
+<script>
+        const menuBtn = document.querySelector('.material-symbols-outlined:first-child').parentElement;
+        const drawer = document.getElementById('nav-drawer');
+        const overlay = document.getElementById('drawer-overlay');
+
+        function toggleDrawer() {
+            drawer.classList.toggle('-translate-x-full');
+            overlay.classList.toggle('opacity-0');
+            overlay.classList.toggle('pointer-events-none');
+        }
+
+        menuBtn.addEventListener('click', toggleDrawer);
+        overlay.addEventListener('click', toggleDrawer);
+
+        // Physical Sticking Implementation
+        const STYLES = [
+            { id: 1, name: 'style-tape-center', weight: 0.25 },
+            { id: 2, name: 'style-tape-corners', weight: 0.20 },
+            { id: 3, name: 'style-paperclip', weight: 0.20 },
+            { id: 4, name: 'style-pin-center', weight: 0.20 },
+            { id: 5, name: 'style-pin-corners', weight: 0.15 }
+        ];
+
+        const CLIP_COLORS = ['#D4AF37', '#FF7F50', '#4169E1', '#9DC183', '#9370DB'];
+        const PIN_COLORS = ['#E53935', '#FFB300', '#43A047', '#1E88E5', '#8E24AA'];
+
+        function applyStickingStyles() {
+            const items = document.querySelectorAll('.masonry-item');
+            let lastStyles = [null, null]; // Track last style in each of the two columns
+
+            items.forEach((item, index) => {
+                const card = item.querySelector('.note-card');
+                const colIndex = index % 2;
+                
+                // Deterministic selection based on index to ensure specific distribution
+                // Also ensuring no two adjacent cards in the same column have same style
+                let styleObj;
+                let attempts = 0;
+                do {
+                    const rand = Math.random();
+                    let cumulativeWeight = 0;
+                    for (const s of STYLES) {
+                        cumulativeWeight += s.weight;
+                        if (rand <= cumulativeWeight) {
+                            styleObj = s;
+                            break;
+                        }
+                    }
+                    attempts++;
+                } while (styleObj.id === lastStyles[colIndex] && attempts < 10);
+                
+                lastStyles[colIndex] = styleObj.id;
+                item.classList.add(styleObj.name);
+
+                // Add visual elements based on style
+                if (styleObj.id === 1) {
+                    const tape = document.createElement('div');
+                    tape.className = 'sticking-element tape-strip';
+                    card.appendChild(tape);
+                    card.style.transform = `rotate(${(Math.random() * 1.6 - 0.8).toFixed(2)}deg)`;
+                } 
+                else if (styleObj.id === 2) {
+                    const t1 = document.createElement('div');
+                    t1.className = 'sticking-element tape-strip tape-1';
+                    const t2 = document.createElement('div');
+                    t2.className = 'sticking-element tape-strip tape-2';
+                    card.appendChild(t1);
+                    card.appendChild(t2);
+                    card.style.transform = `rotate(${(Math.random() * 2.0 - 1.0).toFixed(2)}deg)`;
+                }
+                else if (styleObj.id === 3) {
+                    const color = CLIP_COLORS[Math.floor(Math.random() * CLIP_COLORS.length)];
+                    card.innerHTML += `
+                        <svg class="sticking-element clip-svg" viewBox="0 0 14 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 10V20C4 21.6569 5.34315 23 7 23C8.65685 23 10 21.6569 10 20V6C10 3.23858 7.76142 1 5 1C2.23858 1 0 3.23858 0 6V20C0 23.866 3.13401 27 7 27C10.866 27 14 23.866 14 20V10" stroke="${color}" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    `;
+                    card.style.transform = `rotate(0deg)`;
+                }
+                else if (styleObj.id === 4) {
+                    const color = PIN_COLORS[Math.floor(Math.random() * PIN_COLORS.length)];
+                    const pin = document.createElement('div');
+                    pin.className = 'sticking-element pin-container';
+                    pin.innerHTML = `<div class="pin-head" style="background-color: ${color}"></div>`;
+                    card.appendChild(pin);
+                    card.style.transform = `rotate(${(Math.random() * 2.4 - 1.2).toFixed(2)}deg)`;
+                }
+                else if (styleObj.id === 5) {
+                    const c1 = PIN_COLORS[Math.floor(Math.random() * PIN_COLORS.length)];
+                    const c2 = PIN_COLORS[Math.floor(Math.random() * PIN_COLORS.length)];
+                    card.innerHTML += `
+                        <div class="sticking-element pin-1"><div class="pin-head" style="background-color: ${c1}"></div></div>
+                        <div class="sticking-element pin-2"><div class="pin-head" style="background-color: ${c2}"></div></div>
+                    `;
+                    card.style.transform = `rotate(${(Math.random() * 2.4 - 1.2).toFixed(2)}deg)`;
+                }
+
+                // Staggered reveal animation
+                setTimeout(() => {
+                    item.style.animationDelay = `${index * 35}ms`;
+                    item.classList.add('note-reveal');
+                }, 50);
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', applyStickingStyles);
+
+        // Preserve existing interaction logic
+        document.querySelectorAll('.note-card').forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.add('ring-2', 'ring-primary-container/20');
+                setTimeout(() => card.classList.remove('ring-2', 'ring-primary-container/20'), 300);
+            });
+        });
+    </script>
+</body></html>
