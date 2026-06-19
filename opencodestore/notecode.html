@@ -1,344 +1,578 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
 <title>Elevate - Notepad</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=DM+Serif+Display&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "on-background": "#1b1c1a",
-                        "primary-container": "#2d5be3",
-                        "surface-container-low": "#f4f3f0",
-                        "surface": "#FFFFFF",
-                        "secondary-fixed-dim": "#cac6c2",
-                        "primary-fixed": "#dce1ff",
-                        "error": "#ba1a1a",
-                        "tertiary": "#524f49",
-                        "surface-container-lowest": "#ffffff",
-                        "surface-container": "#efeeeb",
-                        "accent-soft": "#EEF2FC",
-                        "secondary": "#605e5b",
-                        "on-secondary": "#ffffff",
-                        "on-primary-fixed-variant": "#003ab3",
-                        "primary-fixed-dim": "#b6c4ff",
-                        "danger": "#A32D2D",
-                        "on-secondary-container": "#666461",
-                        "on-primary": "#ffffff",
-                        "error-container": "#ffdad6",
-                        "surface-variant": "#e3e2df",
-                        "tertiary-fixed": "#e7e2da",
-                        "on-secondary-fixed-variant": "#484644",
-                        "on-surface": "#1b1c1a",
-                        "on-tertiary-fixed-variant": "#494641",
-                        "secondary-container": "#e6e2de",
-                        "surface-dim": "#F0EFE9",
-                        "inverse-on-surface": "#f2f1ee",
-                        "tertiary-fixed-dim": "#cbc6bf",
-                        "outline": "#747686",
-                        "on-secondary-fixed": "#1c1b19",
-                        "on-primary-fixed": "#001550",
-                        "border-subtle": "rgba(0,0,0,0.08)",
-                        "accent-deep": "#1A3DA0",
-                        "warn": "#854F0B",
-                        "primary": "#0041c6",
-                        "inverse-surface": "#2f312f",
-                        "surface-bright": "#faf9f6",
-                        "success-soft": "#EAF3DE",
-                        "surface-tint": "#1f51da",
-                        "on-tertiary-container": "#ebe6de",
-                        "border-strong": "rgba(0,0,0,0.15)",
-                        "inverse-primary": "#b6c4ff",
-                        "on-primary-container": "#e2e5ff",
-                        "tertiary-container": "#6a6761",
-                        "secondary-fixed": "#e6e2de",
-                        "on-tertiary-fixed": "#1d1b17",
-                        "outline-variant": "#c4c5d7",
-                        "on-error": "#ffffff",
-                        "surface-container-highest": "#e3e2df",
-                        "on-surface-variant": "#434655",
-                        "background": "#faf9f6",
-                        "warn-soft": "#FAEEDA",
-                        "surface-container-high": "#e9e8e5",
-                        "on-tertiary": "#ffffff",
-                        "success": "#3B6D11",
-                        "on-error-container": "#93000a"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "padding-card-sm": "12px",
-                        "section-gap": "24px",
-                        "gap-xs": "4px",
-                        "touch-target": "56px",
-                        "gap-sm": "8px",
-                        "padding-card": "16px",
-                        "unit": "4px",
-                        "margin-screen": "20px"
-                    },
-                    "fontFamily": {
-                        "label-lg": ["DM Sans"],
-                        "badge": ["DM Sans"],
-                        "label-sm": ["DM Sans"],
-                        "headline-md": ["DM Serif Display"],
-                        "label-md": ["DM Sans"],
-                        "headline-lg": ["DM Serif Display"],
-                        "headline-sm": ["DM Serif Display"],
-                        "score-xl": ["DM Serif Display"],
-                        "body-md": ["DM Sans"]
-                    },
-                    "fontSize": {
-                        "label-lg": ["13px", {"lineHeight": "16px", "fontWeight": "400"}],
-                        "badge": ["8px", {"lineHeight": "10px", "fontWeight": "500"}],
-                        "label-sm": ["9px", {"lineHeight": "11px", "letterSpacing": "0.08em", "fontWeight": "500"}],
-                        "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "400"}],
-                        "label-md": ["10px", {"lineHeight": "12px", "letterSpacing": "0.12em", "fontWeight": "500"}],
-                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "400"}],
-                        "headline-sm": ["20px", {"lineHeight": "26px", "fontWeight": "400"}],
-                        "score-xl": ["48px", {"lineHeight": "56px", "fontWeight": "400"}],
-                        "body-md": ["12px", {"lineHeight": "18px", "fontWeight": "500"}]
-                    }
-                }
+tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+            "colors": {
+                "on-background": "#1b1c1a",
+                "primary-container": "#2d5be3",
+                "surface-container-low": "#f4f3f0",
+                "surface": "#FFFFFF",
+                "secondary-fixed-dim": "#cac6c2",
+                "primary-fixed": "#dce1ff",
+                "error": "#ba1a1a",
+                "tertiary": "#524f49",
+                "surface-container-lowest": "#ffffff",
+                "surface-container": "#efeeeb",
+                "accent-soft": "#EEF2FC",
+                "secondary": "#605e5b",
+                "on-secondary": "#ffffff",
+                "on-primary-fixed-variant": "#003ab3",
+                "primary-fixed-dim": "#b6c4ff",
+                "danger": "#A32D2D",
+                "on-secondary-container": "#666461",
+                "on-primary": "#ffffff",
+                "error-container": "#ffdad6",
+                "surface-variant": "#e3e2df",
+                "tertiary-fixed": "#e7e2da",
+                "on-secondary-fixed-variant": "#484644",
+                "on-surface": "#1b1c1a",
+                "on-tertiary-fixed-variant": "#494641",
+                "secondary-container": "#e6e2de",
+                "surface-dim": "#F0EFE9",
+                "inverse-on-surface": "#f2f1ee",
+                "tertiary-fixed-dim": "#cbc6bf",
+                "outline": "#747686",
+                "on-secondary-fixed": "#1c1b19",
+                "on-primary-fixed": "#001550",
+                "border-subtle": "rgba(0,0,0,0.08)",
+                "accent-deep": "#1A3DA0",
+                "warn": "#854F0B",
+                "primary": "#0041c6",
+                "inverse-surface": "#2f312f",
+                "surface-bright": "#faf9f6",
+                "success-soft": "#EAF3DE",
+                "surface-tint": "#1f51da",
+                "on-tertiary-container": "#ebe6de",
+                "border-strong": "rgba(0,0,0,0.15)",
+                "inverse-primary": "#b6c4ff",
+                "on-primary-container": "#e2e5ff",
+                "tertiary-container": "#6a6761",
+                "secondary-fixed": "#e6e2de",
+                "on-tertiary-fixed": "#1d1b17",
+                "outline-variant": "#c4c5d7",
+                "on-error": "#ffffff",
+                "surface-container-highest": "#e3e2df",
+                "on-surface-variant": "#434655",
+                "background": "#faf9f6",
+                "warn-soft": "#FAEEDA",
+                "surface-container-high": "#e9e8e5",
+                "on-tertiary": "#ffffff",
+                "success": "#3B6D11",
+                "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "padding-card-sm": "12px",
+                "section-gap": "24px",
+                "gap-xs": "4px",
+                "touch-target": "56px",
+                "gap-sm": "8px",
+                "padding-card": "16px",
+                "unit": "4px",
+                "margin-screen": "20px"
+            },
+            "fontFamily": {
+                "label-lg": ["DM Sans"],
+                "badge": ["DM Sans"],
+                "label-sm": ["DM Sans"],
+                "headline-md": ["DM Serif Display"],
+                "label-md": ["DM Sans"],
+                "headline-lg": ["DM Serif Display"],
+                "headline-sm": ["DM Serif Display"],
+                "score-xl": ["DM Serif Display"],
+                "body-md": ["DM Sans"]
+            },
+            "fontSize": {
+                "label-lg": ["13px", {"lineHeight": "16px", "fontWeight": "400"}],
+                "badge": ["8px", {"lineHeight": "10px", "fontWeight": "500"}],
+                "label-sm": ["9px", {"lineHeight": "11px", "letterSpacing": "0.08em", "fontWeight": "500"}],
+                "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "400"}],
+                "label-md": ["10px", {"lineHeight": "12px", "letterSpacing": "0.12em", "fontWeight": "500"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "400"}],
+                "headline-sm": ["20px", {"lineHeight": "26px", "fontWeight": "400"}],
+                "score-xl": ["48px", {"lineHeight": "56px", "fontWeight": "400"}],
+                "body-md": ["12px", {"lineHeight": "18px", "fontWeight": "500"}]
             }
         }
-    </script>
+    }
+}
+</script>
 <style>
-        body {
-            background-color: #F7F6F3;
-            font-family: 'DM Sans', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            min-height: max(884px, 100dvh);
-        }
-        .masonry-grid {
-            column-count: 2;
-            column-gap: 16px;
-        }
-        .masonry-item {
-            break-inside: avoid;
-            margin-bottom: 24px;
-            opacity: 0;
-            transform: translateY(4px);
-        }
-        .note-card {
-            border: 0.5px solid rgba(0,0,0,0.06);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            position: relative;
-        }
-        .note-card:active {
-            transform: scale(0.98) !important;
-        }
-        .unread-dot {
-            width: 6px;
-            height: 6px;
-            background-color: #2D5BE3;
-            border-radius: 50%;
-            position: absolute;
-            top: 14px;
-            right: 14px;
-        }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
-            font-size: 24px;
-        }
+body {
+    background-color: #F7F6F3;
+    font-family: 'DM Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: max(884px, 100dvh);
+    margin: 0;
+}
+.masonry-grid {
+    column-count: 2;
+    column-gap: 16px;
+}
+.masonry-item {
+    break-inside: avoid;
+    margin-bottom: 24px;
+    opacity: 0;
+    transform: translateY(4px);
+}
+.note-card {
+    border: 0.5px solid rgba(0,0,0,0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    cursor: pointer;
+}
+.note-card:active {
+    transform: scale(0.98) !important;
+}
+.note-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+.unread-dot {
+    width: 6px;
+    height: 6px;
+    background-color: #2D5BE3;
+    border-radius: 50%;
+    position: absolute;
+    top: 14px;
+    right: 14px;
+}
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+    font-size: 24px;
+}
 
-        /* Physical Sticking Styles */
-        .sticking-element {
-            position: absolute;
-            pointer-events: none;
-            z-index: 10;
-        }
+/* Physical Sticking Styles */
+.sticking-element {
+    position: absolute;
+    pointer-events: none;
+    z-index: 10;
+}
 
-        .tape-strip {
-            width: 38px;
-            height: 11px;
-            background: rgba(255, 255, 255, 0.52);
-            backdrop-filter: blur(2px);
-            border-radius: 1px;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-        }
-        .dark .tape-strip {
-            background: rgba(255, 255, 255, 0.1);
-        }
+.tape-strip {
+    width: 38px;
+    height: 11px;
+    background: rgba(255, 255, 255, 0.52);
+    backdrop-filter: blur(2px);
+    border-radius: 1px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.dark .tape-strip {
+    background: rgba(255, 255, 255, 0.1);
+}
 
-        /* Style 1: Tape Center */
-        .style-tape-center .note-card { padding-top: 24px !important; }
-        .style-tape-center .tape-strip {
-            top: -4px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
+/* Style 1: Tape Center */
+.style-tape-center .note-card { padding-top: 24px !important; }
+.style-tape-center .tape-strip {
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+}
 
-        /* Style 2: Tape Corners */
-        .style-tape-corners .note-card { padding-top: 26px !important; }
-        .style-tape-corners .tape-1 {
-            width: 32px;
-            height: 10px;
-            top: -3px;
-            left: -8px;
-            transform: rotate(-35deg);
-        }
-        .style-tape-corners .tape-2 {
-            width: 32px;
-            height: 10px;
-            top: -3px;
-            right: -8px;
-            transform: rotate(35deg);
-        }
+/* Style 2: Tape Corners */
+.style-tape-corners .note-card { padding-top: 26px !important; }
+.style-tape-corners .tape-1 {
+    width: 32px;
+    height: 10px;
+    top: -3px;
+    left: -8px;
+    transform: rotate(-35deg);
+}
+.style-tape-corners .tape-2 {
+    width: 32px;
+    height: 10px;
+    top: -3px;
+    right: -8px;
+    transform: rotate(35deg);
+}
 
-        /* Style 3: Paperclip */
-        .style-paperclip .note-card { padding-top: 24px !important; }
-        .style-paperclip .clip-svg {
-            top: -8px;
-            left: 12px;
-            width: 14px;
-            height: 28px;
-        }
+/* Style 3: Paperclip */
+.style-paperclip .note-card { padding-top: 24px !important; }
+.style-paperclip .clip-svg {
+    top: -8px;
+    left: 12px;
+    width: 14px;
+    height: 28px;
+}
 
-        /* Style 4: Push Pin Center */
-        .style-pin-center .note-card { padding-top: 24px !important; }
-        .pin-head {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            position: relative;
-            box-shadow: inset -2px -2px 3px rgba(0,0,0,0.2), 1px 2px 3px rgba(0,0,0,0.15);
-        }
-        .pin-head::after {
-            content: '';
-            position: absolute;
-            top: 2px;
-            left: 2px;
-            width: 3px;
-            height: 3px;
-            background: rgba(255,255,255,0.6);
-            border-radius: 50%;
-        }
-        .style-pin-center .pin-container {
-            top: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
+/* Style 4: Push Pin Center */
+.style-pin-center .note-card { padding-top: 24px !important; }
+.pin-head {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: relative;
+    box-shadow: inset -2px -2px 3px rgba(0,0,0,0.2), 1px 2px 3px rgba(0,0,0,0.15);
+}
+.pin-head::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 3px;
+    height: 3px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 50%;
+}
+.style-pin-center .pin-container {
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
 
-        /* Style 5: Push Pin Corners */
-        .style-pin-corners .note-card { padding-top: 24px !important; }
-        .style-pin-corners .pin-1 { top: -4px; left: 12px; }
-        .style-pin-corners .pin-2 { top: -4px; right: 12px; }
+/* Style 5: Push Pin Corners */
+.style-pin-corners .note-card { padding-top: 24px !important; }
+.style-pin-corners .pin-1 { top: -4px; left: 12px; }
+.style-pin-corners .pin-2 { top: -4px; right: 12px; }
 
-        @keyframes fadeInNote {
-            from { opacity: 0; transform: translateY(4px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .note-reveal {
-            animation: fadeInNote 180ms ease-out forwards;
-        }
-    </style>
+@keyframes fadeInNote {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.note-reveal {
+    animation: fadeInNote 180ms ease-out forwards;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+    z-index: 100;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+}
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+.modal-sheet {
+    background: #FFFFFF;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 24px 24px 0 0;
+    padding: 24px 20px;
+    padding-bottom: max(24px, env(safe-area-inset-bottom));
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    max-height: 85vh;
+    overflow-y: auto;
+}
+.modal-overlay.active .modal-sheet {
+    transform: translateY(0);
+}
+.modal-handle {
+    width: 36px;
+    height: 4px;
+    background: #E0DFE0;
+    border-radius: 2px;
+    margin: 0 auto 20px auto;
+}
+.modal-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: #1b1c1a;
+    margin-bottom: 20px;
+}
+.form-group {
+    margin-bottom: 16px;
+}
+.form-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #605e5b;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+    display: block;
+}
+.form-input, .form-textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #e3e2df;
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: #1b1c1a;
+    background: #FAF9F6;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+}
+.form-input:focus, .form-textarea:focus {
+    border-color: #2D5BE3;
+    box-shadow: 0 0 0 3px rgba(45, 91, 227, 0.1);
+}
+.form-textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+.btn {
+    flex: 1;
+    padding: 14px 20px;
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.1s ease, opacity 0.2s ease;
+}
+.btn:active {
+    transform: scale(0.97);
+}
+.btn-primary {
+    background: #2D5BE3;
+    color: #FFFFFF;
+}
+.btn-primary:hover {
+    opacity: 0.92;
+}
+.btn-secondary {
+    background: #efeeeb;
+    color: #1b1c1a;
+}
+.btn-secondary:hover {
+    background: #e3e2df;
+}
+.btn-danger {
+    background: #ffdad6;
+    color: #ba1a1a;
+}
+
+/* Context Menu */
+.context-menu {
+    position: fixed;
+    background: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    z-index: 110;
+    min-width: 180px;
+    padding: 8px;
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.context-menu.active {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+}
+.context-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: #1b1c1a;
+    transition: background 0.15s ease;
+}
+.context-item:hover {
+    background: #f4f3f0;
+}
+.context-item.danger {
+    color: #ba1a1a;
+}
+.context-item.danger:hover {
+    background: #ffdad6;
+}
+
+/* Search Bar */
+.search-bar {
+    display: none;
+    padding: 0 20px 12px 20px;
+}
+.search-bar.active {
+    display: block;
+}
+.search-input-wrap {
+    position: relative;
+}
+.search-input {
+    width: 100%;
+    padding: 12px 14px 12px 44px;
+    border: 1px solid #e3e2df;
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: #1b1c1a;
+    background: #FFFFFF;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+}
+.search-input:focus {
+    border-color: #2D5BE3;
+}
+.search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #8E8B86;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    grid-column: 1 / -1;
+}
+.empty-state-icon {
+    font-size: 48px;
+    color: #cac6c2;
+    margin-bottom: 16px;
+}
+.empty-state-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: #1b1c1a;
+    margin-bottom: 8px;
+}
+.empty-state-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: #605e5b;
+}
+
+/* Notes Count Badge */
+.notes-count {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: #8E8B86;
+    padding: 0 20px 4px 20px;
+}
+.nav-link.active {
+    background: #2d5be3;
+    color: #e2e5ff;
+}
+.nav-link:not(.active) {
+    color: #434655;
+}
+.select-mode .masonry-item .note-card::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #2D5BE3;
+    background: #FFFFFF;
+    z-index: 15;
+}
+.select-mode .masonry-item.selected .note-card::before {
+    content: '✓';
+    background: #2D5BE3;
+    color: #FFFFFF;
+    font-size: 13px;
+    line-height: 18px;
+    text-align: center;
+}
+.select-mode .masonry-item.selected .note-card {
+    box-shadow: 0 0 0 3px rgba(45, 91, 227, 0.18), 0 4px 12px rgba(0,0,0,0.06);
+}
+@media print {
+    header, .search-bar, .notes-count, #sort-row, #fab-btn, #drawer-overlay, #nav-drawer, #note-modal, #context-menu {
+        display: none !important;
+    }
+    body {
+        background: #FFFFFF;
+        min-height: auto;
+    }
+    main {
+        padding: 0 !important;
+    }
+    .masonry-grid {
+        column-count: 1;
+    }
+    .masonry-item {
+        opacity: 1 !important;
+        transform: none !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+}
+</style>
 </head>
 <body class="min-h-screen text-on-surface">
+
 <!-- Top App Bar -->
 <header class="sticky top-0 z-40 bg-[#F7F6F3]/90 backdrop-blur-md flex justify-between items-center px-5 h-16 w-full">
 <div class="flex items-center gap-4">
-<div class="relative flex items-center justify-center w-10 h-10 hover:bg-surface-container transition-colors rounded-full cursor-pointer">
+<div class="relative flex items-center justify-center w-10 h-10 hover:bg-surface-container transition-colors rounded-full cursor-pointer" id="menu-btn">
 <span class="material-symbols-outlined">menu</span>
 <div class="unread-dot"></div>
 </div>
 <h1 class="font-headline-md text-headline-md text-on-surface tracking-tight">Notepad</h1>
 </div>
 <div class="flex items-center gap-1">
-<button class="w-10 h-10 flex items-center justify-center hover:bg-surface-container rounded-full transition-colors">
+<button class="w-10 h-10 flex items-center justify-center hover:bg-surface-container rounded-full transition-colors" id="pdf-btn" title="Export to PDF">
 <span class="material-symbols-outlined">picture_as_pdf</span>
 </button>
-<button class="w-10 h-10 flex items-center justify-center hover:bg-surface-container rounded-full transition-colors">
+<button class="w-10 h-10 flex items-center justify-center hover:bg-surface-container rounded-full transition-colors" id="search-btn" title="Search notes">
 <span class="material-symbols-outlined">search</span>
 </button>
-<button class="w-10 h-10 flex items-center justify-center hover:bg-surface-container rounded-full transition-colors">
+<button class="w-10 h-10 flex items-center justify-center hover:bg-surface-container rounded-full transition-colors" id="more-btn" title="More options">
 <span class="material-symbols-outlined">more_vert</span>
 </button>
 </div>
 </header>
+
+<!-- Search Bar -->
+<div class="search-bar" id="search-bar">
+<div class="search-input-wrap">
+<span class="material-symbols-outlined search-icon">search</span>
+<input class="search-input" id="search-input" type="text" placeholder="Search notes..." autocomplete="off">
+</div>
+</div>
+
+<!-- Notes Count -->
+<div class="notes-count" id="notes-count"></div>
+
 <main class="px-5 pb-24">
 <!-- Sort Row -->
-<div class="flex items-center gap-1 py-4 mb-2 text-on-surface-variant cursor-pointer group">
-<span class="font-label-lg text-label-lg text-[#8E8B86]">Date modified</span>
+<div class="flex items-center gap-1 py-4 mb-2 text-on-surface-variant cursor-pointer group" id="sort-row">
+<span class="font-label-lg text-label-lg text-[#8E8B86]" id="sort-label">Date modified</span>
 <span class="material-symbols-outlined text-[18px] text-[#8E8B86] group-hover:translate-y-0.5 transition-transform">sort</span>
 </div>
 <!-- Notes Masonry Grid -->
-<div class="masonry-grid" id="notes-grid">
-<!-- Note 1: Morning Rituals -->
-<div class="masonry-item">
-<div class="note-card bg-[#F9F8FF] rounded-[14px] p-4 shadow-sm min-h-[140px]">
-<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Reflections on the morning ritual. Soft light hitting the desk at 6:00 AM. The stillness is where the best ideas are born.</p>
-</div>
-<div class="mt-2 px-1">
-<h3 class="font-headline-sm text-[13px] text-on-surface leading-tight">Morning Rituals</h3>
-<p class="font-label-sm text-label-sm text-secondary mt-0.5 uppercase tracking-wider">Oct 12, 2023</p>
-</div>
-</div>
-<!-- Note 2: Kitchen Supplies -->
-<div class="masonry-item">
-<div class="note-card bg-[#FFFAF5] rounded-[14px] p-4 shadow-sm min-h-[100px]">
-<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Grocery list for the week: Sourdough bread, Organic honey, Espresso beans, Sea salt flakes.</p>
-</div>
-<div class="mt-2 px-1">
-<h3 class="font-headline-sm text-[13px] text-on-surface leading-tight">Kitchen Supplies</h3>
-<p class="font-label-sm text-label-sm text-secondary mt-0.5 uppercase tracking-wider">Oct 11, 2023</p>
-</div>
-</div>
-<!-- Note 3: Design Principles -->
-<div class="masonry-item">
-<div class="note-card bg-[#FAFAF8] rounded-[14px] p-4 shadow-sm min-h-[180px]">
-<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">The new interface should prioritize cognitive ergonomics. Minimalist aesthetic values space and subtle contrasts over aggressive branding elements.</p>
-</div>
-<div class="mt-2 px-1">
-<h3 class="font-headline-sm text-[13px] text-on-surface leading-tight">Design Principles</h3>
-<p class="font-label-sm text-label-sm text-secondary mt-0.5 uppercase tracking-wider">Oct 10, 2023</p>
-</div>
-</div>
-<!-- Note 4: Travel Wishlist -->
-<div class="masonry-item">
-<div class="note-card bg-[#F9FDF6] rounded-[14px] p-4 shadow-sm min-h-[160px]">
-<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Ideas for the next escape: <br/>1. Fjords of Norway <br/>2. Swiss Alps in Summer <br/>3. Kyoto Zen Gardens</p>
-</div>
-<div class="mt-2 px-1">
-<h3 class="font-headline-sm text-[13px] text-on-surface leading-tight">Travel Wishlist</h3>
-<p class="font-label-sm text-label-sm text-secondary mt-0.5 uppercase tracking-wider">Oct 08, 2023</p>
-</div>
-</div>
-<!-- Note 5: Project Sync -->
-<div class="masonry-item">
-<div class="note-card bg-[#F9F8FF] rounded-[14px] p-4 shadow-sm min-h-[120px]">
-<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Meeting notes from Thursday: Finalize the layout grid, test typography pairing at 22px titles.</p>
-</div>
-<div class="mt-2 px-1">
-<h3 class="font-headline-sm text-[13px] text-on-surface leading-tight">Project Sync</h3>
-<p class="font-label-sm text-label-sm text-secondary mt-0.5 uppercase tracking-wider">Oct 05, 2023</p>
-</div>
-</div>
-<!-- Note 6: Inspiration -->
-<div class="masonry-item">
-<div class="note-card bg-[#FAFAF8] rounded-[14px] p-4 shadow-sm min-h-[130px]">
-<p class="font-body-md text-body-md text-on-surface-variant italic leading-relaxed">"The details are not the details. They make the design." <br/>— Charles Eames</p>
-</div>
-<div class="mt-2 px-1">
-<h3 class="font-headline-sm text-[13px] text-on-surface leading-tight">Inspiration</h3>
-<p class="font-label-sm text-label-sm text-secondary mt-0.5 uppercase tracking-wider">Oct 02, 2023</p>
-</div>
-</div>
-</div>
+<div class="masonry-grid" id="notes-grid"></div>
 </main>
+
 <!-- Floating Action Button -->
-<button class="fixed bottom-6 right-6 w-14 h-14 bg-[#2D5BE3] text-white rounded-full flex items-center justify-center shadow-lg active:scale-90 transition-transform duration-100 z-50">
+<button class="fixed bottom-6 right-6 w-14 h-14 bg-[#2D5BE3] text-white rounded-full flex items-center justify-center shadow-lg active:scale-90 transition-transform duration-100 z-50" id="fab-btn">
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">edit</span>
 </button>
+
 <!-- Navigation Drawer -->
 <div class="fixed inset-0 bg-black/20 opacity-0 pointer-events-none transition-opacity duration-300 z-[60]" id="drawer-overlay"></div>
 <aside class="fixed inset-y-0 left-0 w-72 bg-surface shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out z-[70] rounded-r-xl" id="nav-drawer">
@@ -347,138 +581,928 @@
 <span class="font-headline-lg text-headline-lg text-primary">Elevate</span>
 </div>
 <nav class="space-y-1">
-<a class="flex items-center gap-4 bg-primary-container text-on-primary-container rounded-full px-4 py-3" href="#">
+<a class="nav-link active flex items-center gap-4 rounded-full px-4 py-3 transition-colors" href="#" data-view="all">
 <span class="material-symbols-outlined">description</span>
 <span class="font-label-lg text-label-lg">All Notes</span>
 </a>
-<a class="flex items-center gap-4 text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-3 transition-colors" href="#">
+<a class="nav-link flex items-center gap-4 hover:bg-surface-container-high rounded-full px-4 py-3 transition-colors" href="#" data-view="notebooks">
 <span class="material-symbols-outlined">folder</span>
 <span class="font-label-lg text-label-lg">Notebooks</span>
 </a>
-<a class="flex items-center gap-4 text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-3 transition-colors" href="#">
+<a class="nav-link flex items-center gap-4 hover:bg-surface-container-high rounded-full px-4 py-3 transition-colors" href="#" data-view="archive">
 <span class="material-symbols-outlined">archive</span>
 <span class="font-label-lg text-label-lg">Archive</span>
 </a>
-<a class="flex items-center gap-4 text-on-surface-variant hover:bg-surface-container-high rounded-full px-4 py-3 transition-colors" href="#">
+<a class="nav-link flex items-center gap-4 hover:bg-surface-container-high rounded-full px-4 py-3 transition-colors" href="#" data-view="trash">
 <span class="material-symbols-outlined">delete</span>
 <span class="font-label-lg text-label-lg">Trash</span>
 </a>
 </nav>
 </div>
 </aside>
+
+<!-- Create/Edit Note Modal -->
+<div class="modal-overlay" id="note-modal">
+<div class="modal-sheet">
+<div class="modal-handle"></div>
+<div class="modal-title" id="modal-title">New Note</div>
+<div class="form-group">
+<label class="form-label" for="note-title">Title</label>
+<input class="form-input" id="note-title" type="text" placeholder="Note title..." autocomplete="off">
+</div>
+<div class="form-group">
+<label class="form-label" for="note-body">Note</label>
+<textarea class="form-textarea" id="note-body" placeholder="Write your note here..." rows="5"></textarea>
+</div>
+<div class="form-actions">
+<button class="btn btn-secondary" id="modal-cancel">Cancel</button>
+<button class="btn btn-primary" id="modal-save">Save Note</button>
+</div>
+</div>
+</div>
+
+<!-- Context Menu -->
+<div class="context-menu" id="context-menu">
+<div class="context-item" id="ctx-edit">
+<span class="material-symbols-outlined" style="font-size: 20px;">edit</span>
+<span>Edit Note</span>
+</div>
+<div class="context-item danger" id="ctx-delete">
+<span class="material-symbols-outlined" style="font-size: 20px;">delete</span>
+<span>Delete Note</span>
+</div>
+</div>
+
 <script>
-        const menuBtn = document.querySelector('.material-symbols-outlined:first-child').parentElement;
-        const drawer = document.getElementById('nav-drawer');
-        const overlay = document.getElementById('drawer-overlay');
+(function() {
+    'use strict';
 
-        function toggleDrawer() {
-            drawer.classList.toggle('-translate-x-full');
-            overlay.classList.toggle('opacity-0');
-            overlay.classList.toggle('pointer-events-none');
+    // ─── CONSTANTS ──────────────────────────────────────────────────────
+    const STORAGE_KEY = 'elevate_notes';
+    const SORT_KEY = 'elevate_notes_sort';
+    const VIEW_KEY = 'elevate_notes_view';
+    
+    const STYLES = [
+        { id: 1, name: 'style-tape-center', weight: 0.25 },
+        { id: 2, name: 'style-tape-corners', weight: 0.20 },
+        { id: 3, name: 'style-paperclip', weight: 0.20 },
+        { id: 4, name: 'style-pin-center', weight: 0.20 },
+        { id: 5, name: 'style-pin-corners', weight: 0.15 }
+    ];
+
+    const CLIP_COLORS = ['#D4AF37', '#FF7F50', '#4169E1', '#9DC183', '#9370DB'];
+    const PIN_COLORS = ['#E53935', '#FFB300', '#43A047', '#1E88E5', '#8E24AA'];
+
+    const NOTE_COLORS = {
+        'default': '#F9F8FF',
+        'list': '#FFFAF5',
+        'design': '#FAFAF8',
+        'travel': '#F9FDF6',
+        'meeting': '#F9F8FF',
+        'quote': '#FAFAF8'
+    };
+
+    const SORT_OPTIONS = [
+        { key: 'dateModified', label: 'Date modified', compare: (a, b) => new Date(b.dateModified) - new Date(a.dateModified) },
+        { key: 'dateCreated', label: 'Date created', compare: (a, b) => new Date(b.dateCreated) - new Date(a.dateCreated) },
+        { key: 'titleAZ', label: 'Title A-Z', compare: (a, b) => a.title.localeCompare(b.title) },
+        { key: 'titleZA', label: 'Title Z-A', compare: (a, b) => b.title.localeCompare(a.title) }
+    ];
+
+    const SEED_NOTES = [
+        { id: 'n1', title: 'Morning Rituals', body: 'Reflections on the morning ritual. Soft light hitting the desk at 6:00 AM. The stillness is where the best ideas are born.', type: 'default', stickingStyleId: 1, isUnread: true, dateCreated: '2023-10-12T00:00:00', dateModified: '2023-10-12T00:00:00' },
+        { id: 'n2', title: 'Kitchen Supplies', body: 'Grocery list for the week: Sourdough bread, Organic honey, Espresso beans, Sea salt flakes.', type: 'list', stickingStyleId: 2, isUnread: false, dateCreated: '2023-10-11T00:00:00', dateModified: '2023-10-11T00:00:00' },
+        { id: 'n3', title: 'Design Principles', body: 'The new interface should prioritize cognitive ergonomics. Minimalist aesthetic values space and subtle contrasts over aggressive branding elements.', type: 'design', stickingStyleId: 3, isUnread: false, dateCreated: '2023-10-10T00:00:00', dateModified: '2023-10-10T00:00:00' },
+        { id: 'n4', title: 'Travel Wishlist', body: 'Ideas for the next escape:\n1. Fjords of Norway\n2. Swiss Alps in Summer\n3. Kyoto Zen Gardens', type: 'travel', stickingStyleId: 4, isUnread: false, dateCreated: '2023-10-08T00:00:00', dateModified: '2023-10-08T00:00:00' },
+        { id: 'n5', title: 'Project Sync', body: 'Meeting notes from Thursday: Finalize the layout grid, test typography pairing at 22px titles.', type: 'meeting', stickingStyleId: 5, isUnread: false, dateCreated: '2023-10-05T00:00:00', dateModified: '2023-10-05T00:00:00' },
+        { id: 'n6', title: 'Inspiration', body: '\u201cThe details are not the details. They make the design.\u201d\n\u2014 Charles Eames', type: 'quote', stickingStyleId: 1, isUnread: false, dateCreated: '2023-10-02T00:00:00', dateModified: '2023-10-02T00:00:00' }
+    ];
+
+    // ─── STATE ───────────────────────────────────────────────────────────
+    let notes = [];
+    let currentSortIndex = 0;
+    let searchQuery = '';
+    let editingNoteId = null; // null = create mode, string = edit mode
+    let contextNoteId = null;
+    let currentView = 'all';
+    let isSelectMode = false;
+    const selectedNoteIds = new Set();
+
+    // ─── DOM REFS ────────────────────────────────────────────────────────
+    const $ = (sel) => document.querySelector(sel);
+    const $$ = (sel) => document.querySelectorAll(sel);
+
+    const grid = $('#notes-grid');
+    const sortLabel = $('#sort-label');
+    const sortRow = $('#sort-row');
+    const searchBar = $('#search-bar');
+    const searchInput = $('#search-input');
+    const searchBtn = $('#search-btn');
+    const fabBtn = $('#fab-btn');
+    const modal = $('#note-modal');
+    const modalTitle = $('#modal-title');
+    const noteTitle = $('#note-title');
+    const noteBody = $('#note-body');
+    const modalSave = $('#modal-save');
+    const modalCancel = $('#modal-cancel');
+    const ctxMenu = $('#context-menu');
+    const ctxEdit = $('#ctx-edit');
+    const ctxDelete = $('#ctx-delete');
+    const menuBtn = $('#menu-btn');
+    const drawer = $('#nav-drawer');
+    const overlay = $('#drawer-overlay');
+    const notesCount = $('#notes-count');
+    const pdfBtn = $('#pdf-btn');
+    const moreBtn = $('#more-btn');
+    const navLinks = $$('.nav-link');
+
+    // ─── STORAGE ─────────────────────────────────────────────────────────
+    function loadNotes() {
+        try {
+            const stored = localStorage.getItem(STORAGE_KEY);
+            if (stored) {
+                const parsed = JSON.parse(stored);
+                if (Array.isArray(parsed)) {
+                    return parsed.map(normalizeNote);
+                }
+            }
+        } catch (e) {
+            console.warn('Failed to load notes from storage:', e);
         }
+        // Seed with default notes
+        const seedCopy = JSON.parse(JSON.stringify(SEED_NOTES)).map(normalizeNote);
+        saveNotes(seedCopy);
+        return seedCopy;
+    }
 
-        menuBtn.addEventListener('click', toggleDrawer);
-        overlay.addEventListener('click', toggleDrawer);
+    function normalizeNote(note) {
+        return {
+            ...note,
+            title: note.title || 'Untitled',
+            body: note.body || '...',
+            type: note.type || getNoteType(note.title || '', note.body || ''),
+            stickingStyleId: note.stickingStyleId || 1,
+            isUnread: Boolean(note.isUnread),
+            dateCreated: note.dateCreated || new Date().toISOString(),
+            dateModified: note.dateModified || note.dateCreated || new Date().toISOString(),
+            status: note.status || 'active',
+            notebook: note.notebook || 'Personal',
+            deletedAt: note.deletedAt || null
+        };
+    }
 
-        // Physical Sticking Implementation
-        const STYLES = [
-            { id: 1, name: 'style-tape-center', weight: 0.25 },
-            { id: 2, name: 'style-tape-corners', weight: 0.20 },
-            { id: 3, name: 'style-paperclip', weight: 0.20 },
-            { id: 4, name: 'style-pin-center', weight: 0.20 },
-            { id: 5, name: 'style-pin-corners', weight: 0.15 }
-        ];
-
-        const CLIP_COLORS = ['#D4AF37', '#FF7F50', '#4169E1', '#9DC183', '#9370DB'];
-        const PIN_COLORS = ['#E53935', '#FFB300', '#43A047', '#1E88E5', '#8E24AA'];
-
-        function applyStickingStyles() {
-            const items = document.querySelectorAll('.masonry-item');
-            let lastStyles = [null, null]; // Track last style in each of the two columns
-
-            items.forEach((item, index) => {
-                const card = item.querySelector('.note-card');
-                const colIndex = index % 2;
-                
-                // Deterministic selection based on index to ensure specific distribution
-                // Also ensuring no two adjacent cards in the same column have same style
-                let styleObj;
-                let attempts = 0;
-                do {
-                    const rand = Math.random();
-                    let cumulativeWeight = 0;
-                    for (const s of STYLES) {
-                        cumulativeWeight += s.weight;
-                        if (rand <= cumulativeWeight) {
-                            styleObj = s;
-                            break;
-                        }
-                    }
-                    attempts++;
-                } while (styleObj.id === lastStyles[colIndex] && attempts < 10);
-                
-                lastStyles[colIndex] = styleObj.id;
-                item.classList.add(styleObj.name);
-
-                // Add visual elements based on style
-                if (styleObj.id === 1) {
-                    const tape = document.createElement('div');
-                    tape.className = 'sticking-element tape-strip';
-                    card.appendChild(tape);
-                    card.style.transform = `rotate(${(Math.random() * 1.6 - 0.8).toFixed(2)}deg)`;
-                } 
-                else if (styleObj.id === 2) {
-                    const t1 = document.createElement('div');
-                    t1.className = 'sticking-element tape-strip tape-1';
-                    const t2 = document.createElement('div');
-                    t2.className = 'sticking-element tape-strip tape-2';
-                    card.appendChild(t1);
-                    card.appendChild(t2);
-                    card.style.transform = `rotate(${(Math.random() * 2.0 - 1.0).toFixed(2)}deg)`;
-                }
-                else if (styleObj.id === 3) {
-                    const color = CLIP_COLORS[Math.floor(Math.random() * CLIP_COLORS.length)];
-                    card.innerHTML += `
-                        <svg class="sticking-element clip-svg" viewBox="0 0 14 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4 10V20C4 21.6569 5.34315 23 7 23C8.65685 23 10 21.6569 10 20V6C10 3.23858 7.76142 1 5 1C2.23858 1 0 3.23858 0 6V20C0 23.866 3.13401 27 7 27C10.866 27 14 23.866 14 20V10" stroke="${color}" stroke-width="1.5" stroke-linecap="round"/>
-                        </svg>
-                    `;
-                    card.style.transform = `rotate(0deg)`;
-                }
-                else if (styleObj.id === 4) {
-                    const color = PIN_COLORS[Math.floor(Math.random() * PIN_COLORS.length)];
-                    const pin = document.createElement('div');
-                    pin.className = 'sticking-element pin-container';
-                    pin.innerHTML = `<div class="pin-head" style="background-color: ${color}"></div>`;
-                    card.appendChild(pin);
-                    card.style.transform = `rotate(${(Math.random() * 2.4 - 1.2).toFixed(2)}deg)`;
-                }
-                else if (styleObj.id === 5) {
-                    const c1 = PIN_COLORS[Math.floor(Math.random() * PIN_COLORS.length)];
-                    const c2 = PIN_COLORS[Math.floor(Math.random() * PIN_COLORS.length)];
-                    card.innerHTML += `
-                        <div class="sticking-element pin-1"><div class="pin-head" style="background-color: ${c1}"></div></div>
-                        <div class="sticking-element pin-2"><div class="pin-head" style="background-color: ${c2}"></div></div>
-                    `;
-                    card.style.transform = `rotate(${(Math.random() * 2.4 - 1.2).toFixed(2)}deg)`;
-                }
-
-                // Staggered reveal animation
-                setTimeout(() => {
-                    item.style.animationDelay = `${index * 35}ms`;
-                    item.classList.add('note-reveal');
-                }, 50);
-            });
+    function saveNotes(noteArray) {
+        try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(noteArray));
+        } catch (e) {
+            console.warn('Failed to save notes:', e);
         }
+    }
 
-        window.addEventListener('DOMContentLoaded', applyStickingStyles);
+    function loadSortIndex() {
+        try {
+            const stored = localStorage.getItem(SORT_KEY);
+            if (stored !== null) {
+                const idx = parseInt(stored, 10);
+                if (idx >= 0 && idx < SORT_OPTIONS.length) return idx;
+            }
+        } catch (e) {}
+        return 0;
+    }
 
-        // Preserve existing interaction logic
-        document.querySelectorAll('.note-card').forEach(card => {
-            card.addEventListener('click', () => {
-                card.classList.add('ring-2', 'ring-primary-container/20');
-                setTimeout(() => card.classList.remove('ring-2', 'ring-primary-container/20'), 300);
-            });
+    function saveSortIndex(idx) {
+        try {
+            localStorage.setItem(SORT_KEY, String(idx));
+        } catch (e) {}
+    }
+
+    function loadView() {
+        try {
+            const stored = localStorage.getItem(VIEW_KEY);
+            if (['all', 'notebooks', 'archive', 'trash'].includes(stored)) return stored;
+        } catch (e) {}
+        return 'all';
+    }
+
+    function saveView(view) {
+        try {
+            localStorage.setItem(VIEW_KEY, view);
+        } catch (e) {}
+    }
+
+    function generateId() {
+        return 'note_' + Date.now() + '_' + Math.random().toString(36).substring(2, 8);
+    }
+
+    function getNoteType(title, body) {
+        const t = title.toLowerCase();
+        const b = body.toLowerCase();
+        if (t.includes('travel') || b.includes('travel') || b.includes('escape') || b.includes('trip')) return 'travel';
+        if (t.includes('design') || b.includes('design') || b.includes('interface') || b.includes('aesthetic')) return 'design';
+        if (t.includes('kitchen') || b.includes('grocery') || b.includes('list') || t.includes('supplies')) return 'list';
+        if (t.includes('meeting') || b.includes('meeting') || b.includes('sync') || t.includes('sync')) return 'meeting';
+        if (b.startsWith('"') || b.startsWith('\u201c') || t.includes('quote') || t.includes('inspiration')) return 'quote';
+        return 'default';
+    }
+
+    function getStickingStyleId(index) {
+        // Deterministic but varied
+        return ((index % 5) + 1);
+    }
+
+    // ─── FORMATTING ──────────────────────────────────────────────────────
+    function formatDate(dateString) {
+        const d = new Date(dateString);
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        return months[d.getMonth()] + ' ' + String(d.getDate()).padStart(2, '0') + ', ' + d.getFullYear();
+    }
+
+    function truncateText(text, maxLen) {
+        if (text.length <= maxLen) return text;
+        return text.substring(0, maxLen) + '...';
+    }
+
+    // ─── RENDER ──────────────────────────────────────────────────────────
+    function renderNotes() {
+        document.body.classList.toggle('select-mode', isSelectMode);
+        navLinks.forEach(link => {
+            link.classList.toggle('active', link.dataset.view === currentView);
         });
-    </script>
-</body></html>
+
+        // Filter
+        let filtered = notes.filter(note => {
+            const status = note.status || 'active';
+            if (currentView === 'archive') return status === 'archive';
+            if (currentView === 'trash') return status === 'trash';
+            return status === 'active';
+        });
+        if (searchQuery.trim()) {
+            const q = searchQuery.toLowerCase().trim();
+            filtered = filtered.filter(n => 
+                n.title.toLowerCase().includes(q) || 
+                n.body.toLowerCase().includes(q) ||
+                (n.notebook || '').toLowerCase().includes(q)
+            );
+        }
+
+        // Sort
+        const sortOption = SORT_OPTIONS[currentSortIndex];
+        filtered = [...filtered].sort(sortOption.compare);
+
+        // Update sort label
+        sortLabel.textContent = sortOption.label;
+
+        // Update count
+        const viewLabel = currentView === 'notebooks' ? 'Personal notebook' :
+            currentView.charAt(0).toUpperCase() + currentView.slice(1);
+        const selectedText = isSelectMode ? ' • ' + selectedNoteIds.size + ' selected' : '';
+        notesCount.textContent = viewLabel + ' • ' + filtered.length + ' note' + (filtered.length !== 1 ? 's' : '') + selectedText;
+
+        if (filtered.length === 0) {
+            grid.innerHTML = `
+                <div class="empty-state">
+                    <div class="empty-state-icon material-symbols-outlined" style="font-size: 48px;">note_add</div>
+                    <div class="empty-state-title">${searchQuery ? 'No matching notes' : 'No notes yet'}</div>
+                    <div class="empty-state-text">${searchQuery ? 'Try a different search term' : 'Tap the edit button to create your first note'}</div>
+                </div>
+            `;
+            return;
+        }
+
+        // Build masonry items
+        let html = '';
+        filtered.forEach((note, index) => {
+            const bgColor = NOTE_COLORS[note.type] || NOTE_COLORS.default;
+            const styleId = note.stickingStyleId || getStickingStyleId(index);
+            const unreadDot = note.isUnread ? '<div class="unread-dot"></div>' : '';
+            const bodyClass = note.type === 'quote' ? 'italic' : '';
+
+            html += `
+                <div class="masonry-item ${selectedNoteIds.has(note.id) ? 'selected' : ''}" data-id="${note.id}" data-style="${styleId}">
+                    <div class="note-card" style="background: ${bgColor}; border-radius: 14px; padding: 16px; min-height: 80px;">
+                        <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed ${bodyClass}">${truncateText(note.body, 200)}</p>
+                    </div>
+                    <div class="mt-2 px-1">
+                        <h3 class="font-headline-sm text-[13px] text-on-surface leading-tight">${note.title}</h3>
+                        <p class="font-label-sm text-label-sm text-secondary mt-0.5 uppercase tracking-wider">${currentView === 'notebooks' ? note.notebook + ' • ' : ''}${formatDate(note.dateModified)}</p>
+                    </div>
+                </div>
+            `;
+        });
+
+        grid.innerHTML = html;
+
+        // Apply sticking styles and animations after render
+        requestAnimationFrame(() => {
+            applyStickingStyles();
+            applyNoteInteractions();
+            animateReveal();
+        });
+    }
+
+    function applyStickingStyles() {
+        const items = grid.querySelectorAll('.masonry-item');
+
+        items.forEach((item, index) => {
+            const card = item.querySelector('.note-card');
+
+            // Use stored style or assign
+            let styleId = parseInt(item.dataset.style, 10);
+            if (!styleId || styleId < 1 || styleId > 5) {
+                styleId = getStickingStyleId(index);
+            }
+
+            const styleObj = STYLES.find(s => s.id === styleId) || STYLES[0];
+            item.classList.add(styleObj.name);
+
+            // Add visual elements based on style
+            if (styleObj.id === 1) {
+                const tape = document.createElement('div');
+                tape.className = 'sticking-element tape-strip';
+                card.appendChild(tape);
+                card.style.transform = 'rotate(' + ((Math.random() * 1.6 - 0.8).toFixed(2)) + 'deg)';
+            } 
+            else if (styleObj.id === 2) {
+                const t1 = document.createElement('div');
+                t1.className = 'sticking-element tape-strip tape-1';
+                const t2 = document.createElement('div');
+                t2.className = 'sticking-element tape-strip tape-2';
+                card.appendChild(t1);
+                card.appendChild(t2);
+                card.style.transform = 'rotate(' + ((Math.random() * 2.0 - 1.0).toFixed(2)) + 'deg)';
+            }
+            else if (styleObj.id === 3) {
+                const color = CLIP_COLORS[Math.floor(Math.random() * CLIP_COLORS.length)];
+                const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                svg.setAttribute('class', 'sticking-element clip-svg');
+                svg.setAttribute('viewBox', '0 0 14 28');
+                svg.setAttribute('fill', 'none');
+                svg.innerHTML = '<path d="M4 10V20C4 21.6569 5.34315 23 7 23C8.65685 23 10 21.6569 10 20V6C10 3.23858 7.76142 1 5 1C2.23858 1 0 3.23858 0 6V20C0 23.866 3.13401 27 7 27C10.866 27 14 23.866 14 20V10" stroke="' + color + '" stroke-width="1.5" stroke-linecap="round"/>';
+                card.appendChild(svg);
+                card.style.transform = 'rotate(0deg)';
+            }
+            else if (styleObj.id === 4) {
+                const color = PIN_COLORS[Math.floor(Math.random() * PIN_COLORS.length)];
+                const pin = document.createElement('div');
+                pin.className = 'sticking-element pin-container';
+                pin.innerHTML = '<div class="pin-head" style="background-color: ' + color + '"></div>';
+                card.appendChild(pin);
+                card.style.transform = 'rotate(' + ((Math.random() * 2.4 - 1.2).toFixed(2)) + 'deg)';
+            }
+            else if (styleObj.id === 5) {
+                const c1 = PIN_COLORS[Math.floor(Math.random() * PIN_COLORS.length)];
+                const c2 = PIN_COLORS[Math.floor(Math.random() * PIN_COLORS.length)];
+                const p1 = document.createElement('div');
+                p1.className = 'sticking-element pin-1';
+                p1.innerHTML = '<div class="pin-head" style="background-color: ' + c1 + '"></div>';
+                const p2 = document.createElement('div');
+                p2.className = 'sticking-element pin-2';
+                p2.innerHTML = '<div class="pin-head" style="background-color: ' + c2 + '"></div>';
+                card.appendChild(p1);
+                card.appendChild(p2);
+                card.style.transform = 'rotate(' + ((Math.random() * 2.4 - 1.2).toFixed(2)) + 'deg)';
+            }
+        });
+    }
+
+    function applyNoteInteractions() {
+        const items = grid.querySelectorAll('.masonry-item');
+        items.forEach(item => {
+            const card = item.querySelector('.note-card');
+            const noteId = item.dataset.id;
+            let longPressTimer = null;
+            let isLongPress = false;
+
+            // Click to open edit
+            card.addEventListener('click', function(e) {
+                if (isLongPress) {
+                    isLongPress = false;
+                    return;
+                }
+                if (isSelectMode) {
+                    toggleNoteSelection(noteId);
+                    return;
+                }
+                if (currentView === 'trash') {
+                    e.stopPropagation();
+                    showContextMenu(e.clientX, e.clientY, noteId);
+                    return;
+                }
+                openEditModal(noteId);
+            });
+
+            // Long press for context menu
+            card.addEventListener('pointerdown', function(e) {
+                isLongPress = false;
+                longPressTimer = setTimeout(() => {
+                    isLongPress = true;
+                    showContextMenu(e.clientX, e.clientY, noteId);
+                }, 500);
+            });
+
+            card.addEventListener('pointerup', function() {
+                clearTimeout(longPressTimer);
+            });
+
+            card.addEventListener('pointerleave', function() {
+                clearTimeout(longPressTimer);
+            });
+
+            // Touch events for mobile
+            card.addEventListener('touchstart', function(e) {
+                isLongPress = false;
+                const touch = e.touches[0];
+                longPressTimer = setTimeout(() => {
+                    isLongPress = true;
+                    showContextMenu(touch.clientX, touch.clientY, noteId);
+                }, 500);
+            }, { passive: true });
+
+            card.addEventListener('touchend', function() {
+                clearTimeout(longPressTimer);
+            }, { passive: true });
+
+            card.addEventListener('touchmove', function() {
+                clearTimeout(longPressTimer);
+            }, { passive: true });
+        });
+    }
+
+    function animateReveal() {
+        const items = grid.querySelectorAll('.masonry-item');
+        items.forEach((item, index) => {
+            setTimeout(() => {
+                item.style.animationDelay = (index * 35) + 'ms';
+                item.classList.add('note-reveal');
+            }, 50);
+        });
+    }
+
+    // ─── CONTEXT MENU ────────────────────────────────────────────────────
+    function showContextMenu(x, y, noteId) {
+        contextNoteId = noteId;
+        if (noteId) {
+            setContextMenuMode(false);
+        }
+        const menu = ctxMenu;
+        const maxX = window.innerWidth - menu.offsetWidth - 10;
+        const maxY = window.innerHeight - menu.offsetHeight - 10;
+        const posX = Math.min(x, maxX);
+        const posY = Math.min(y, maxY);
+        menu.style.left = Math.max(10, posX) + 'px';
+        menu.style.top = Math.max(10, posY) + 'px';
+        menu.classList.add('active');
+    }
+
+    function hideContextMenu() {
+        ctxMenu.classList.remove('active');
+        contextNoteId = null;
+    }
+
+    // ─── MODAL ───────────────────────────────────────────────────────────
+    function openCreateModal() {
+        editingNoteId = null;
+        modalTitle.textContent = 'New Note';
+        noteTitle.value = '';
+        noteBody.value = '';
+        modalSave.textContent = 'Create Note';
+        modal.classList.add('active');
+        setTimeout(() => noteTitle.focus(), 350);
+    }
+
+    function openEditModal(noteId) {
+        const note = notes.find(n => n.id === noteId);
+        if (!note) return;
+        editingNoteId = noteId;
+        modalTitle.textContent = 'Edit Note';
+        noteTitle.value = note.title;
+        noteBody.value = note.body;
+        modalSave.textContent = 'Save Changes';
+        modal.classList.add('active');
+        setTimeout(() => noteTitle.focus(), 350);
+    }
+
+    function closeModal() {
+        modal.classList.remove('active');
+        editingNoteId = null;
+    }
+
+    function saveNoteFromModal() {
+        const title = noteTitle.value.trim();
+        const body = noteBody.value.trim();
+        
+        if (!title && !body) {
+            // If both empty, show a subtle shake
+            noteTitle.style.borderColor = '#ba1a1a';
+            noteBody.style.borderColor = '#ba1a1a';
+            setTimeout(() => {
+                noteTitle.style.borderColor = '';
+                noteBody.style.borderColor = '';
+                noteTitle.focus();
+            }, 500);
+            return;
+        }
+
+        const now = new Date().toISOString();
+        
+        if (editingNoteId) {
+            // Edit existing
+            const idx = notes.findIndex(n => n.id === editingNoteId);
+            if (idx !== -1) {
+                const noteType = getNoteType(title, body);
+                notes[idx] = {
+                    ...notes[idx],
+                    title: title || 'Untitled',
+                    body: body || '...',
+                    type: noteType,
+                    dateModified: now
+                };
+            }
+        } else {
+            // Create new
+            const noteType = getNoteType(title, body);
+            const newNote = {
+                id: generateId(),
+                title: title || 'Untitled',
+                body: body || '...',
+                type: noteType,
+                stickingStyleId: getStickingStyleId(notes.length),
+                isUnread: true,
+                status: 'active',
+                notebook: 'Personal',
+                deletedAt: null,
+                dateCreated: now,
+                dateModified: now
+            };
+            notes.push(newNote);
+            currentView = 'all';
+            saveView(currentView);
+        }
+
+        saveNotes(notes);
+        closeModal();
+        renderNotes();
+    }
+
+    function deleteNoteById(noteId) {
+        if (!noteId) return;
+        
+        const note = notes.find(n => n.id === noteId);
+        if (!note) return;
+        const isInTrash = note.status === 'trash';
+        if (!confirm(isInTrash ? 'Permanently delete this note?' : 'Move this note to Trash?')) return;
+        
+        if (isInTrash) {
+            notes = notes.filter(n => n.id !== noteId);
+        } else {
+            notes = notes.map(n => n.id === noteId ? {
+                ...n,
+                status: 'trash',
+                deletedAt: new Date().toISOString(),
+                dateModified: new Date().toISOString()
+            } : n);
+        }
+        saveNotes(notes);
+        hideContextMenu();
+        renderNotes();
+    }
+
+    function archiveNoteById(noteId) {
+        if (!noteId) return;
+        notes = notes.map(n => n.id === noteId ? {
+            ...n,
+            status: n.status === 'archive' ? 'active' : 'archive',
+            dateModified: new Date().toISOString()
+        } : n);
+        saveNotes(notes);
+        hideContextMenu();
+        renderNotes();
+        showToast(currentView === 'archive' ? 'Note moved to All Notes' : 'Note archived');
+    }
+
+    function restoreNoteById(noteId) {
+        if (!noteId) return;
+        notes = notes.map(n => n.id === noteId ? {
+            ...n,
+            status: 'active',
+            deletedAt: null,
+            dateModified: new Date().toISOString()
+        } : n);
+        saveNotes(notes);
+        hideContextMenu();
+        renderNotes();
+        showToast('Note restored');
+    }
+
+    function toggleNoteSelection(noteId) {
+        if (selectedNoteIds.has(noteId)) {
+            selectedNoteIds.delete(noteId);
+        } else {
+            selectedNoteIds.add(noteId);
+        }
+        renderNotes();
+    }
+
+    function toggleSelectMode() {
+        isSelectMode = !isSelectMode;
+        selectedNoteIds.clear();
+        setContextMenuMode(false);
+        hideContextMenu();
+        renderNotes();
+        showToast(isSelectMode ? 'Select notes to manage' : 'Selection cleared');
+    }
+
+    function deleteSelectedNotes() {
+        if (selectedNoteIds.size === 0) {
+            showToast('No notes selected');
+            return;
+        }
+        if (!confirm('Delete selected notes?')) return;
+        const selected = new Set(selectedNoteIds);
+        const now = new Date().toISOString();
+        if (currentView === 'trash') {
+            notes = notes.filter(n => !selected.has(n.id));
+        } else {
+            notes = notes.map(n => selected.has(n.id) ? {
+                ...n,
+                status: 'trash',
+                deletedAt: now,
+                dateModified: now
+            } : n);
+        }
+        selectedNoteIds.clear();
+        isSelectMode = false;
+        saveNotes(notes);
+        renderNotes();
+    }
+
+    function emptyTrash() {
+        const trashCount = notes.filter(n => n.status === 'trash').length;
+        if (trashCount === 0) {
+            showToast('Trash is already empty');
+            return;
+        }
+        if (!confirm('Permanently delete all notes in Trash?')) return;
+        notes = notes.filter(n => n.status !== 'trash');
+        saveNotes(notes);
+        renderNotes();
+        showToast('Trash emptied');
+    }
+
+    function exportToPdf() {
+        hideContextMenu();
+        window.print();
+    }
+
+    // ─── TOGGLE DRAWER ───────────────────────────────────────────────────
+    function toggleDrawer() {
+        drawer.classList.toggle('-translate-x-full');
+        overlay.classList.toggle('opacity-0');
+        overlay.classList.toggle('pointer-events-none');
+    }
+
+    // ─── SEARCH ──────────────────────────────────────────────────────────
+    function toggleSearch() {
+        const isActive = searchBar.classList.toggle('active');
+        if (isActive) {
+            setTimeout(() => searchInput.focus(), 100);
+        } else {
+            searchInput.value = '';
+            searchQuery = '';
+            renderNotes();
+        }
+    }
+
+    // ─── SORT ────────────────────────────────────────────────────────────
+    function cycleSort() {
+        currentSortIndex = (currentSortIndex + 1) % SORT_OPTIONS.length;
+        saveSortIndex(currentSortIndex);
+        renderNotes();
+    }
+
+    // ─── EVENTS ──────────────────────────────────────────────────────────
+    // Menu / Drawer
+    menuBtn.addEventListener('click', toggleDrawer);
+    overlay.addEventListener('click', toggleDrawer);
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            currentView = this.dataset.view || 'all';
+            saveView(currentView);
+            selectedNoteIds.clear();
+            isSelectMode = false;
+            if (!drawer.classList.contains('-translate-x-full')) {
+                toggleDrawer();
+            }
+            renderNotes();
+        });
+    });
+
+    // Sort
+    sortRow.addEventListener('click', cycleSort);
+
+    // Search
+    searchBtn.addEventListener('click', toggleSearch);
+    searchInput.addEventListener('input', function() {
+        searchQuery = this.value;
+        renderNotes();
+    });
+
+    // FAB - Create note
+    fabBtn.addEventListener('click', function() {
+        openCreateModal();
+    });
+
+    // Modal actions
+    modalCancel.addEventListener('click', closeModal);
+    modalSave.addEventListener('click', saveNoteFromModal);
+
+    // Close modal on overlay click
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) closeModal();
+    });
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            if (modal.classList.contains('active')) closeModal();
+            if (ctxMenu.classList.contains('active')) hideContextMenu();
+            if (searchBar.classList.contains('active')) toggleSearch();
+        }
+        if (e.key === 'Enter' && (e.ctrlKey || e.metaKey) && modal.classList.contains('active')) {
+            e.preventDefault();
+            saveNoteFromModal();
+        }
+    });
+
+    // Context menu actions
+    ctxEdit.addEventListener('click', function() {
+        ctxEditHandler();
+    });
+
+    ctxDelete.addEventListener('click', function() {
+        ctxDeleteHandler();
+    });
+
+    // Close context menu on click outside
+    document.addEventListener('click', function(e) {
+        if (!ctxMenu.contains(e.target) && !moreBtn.contains(e.target)) {
+            hideContextMenu();
+        }
+    });
+
+    // PDF button
+    pdfBtn.addEventListener('click', exportToPdf);
+
+    // Track which mode the context menu is in
+    let isMoreMenu = false;
+
+    function ctxEditHandler() {
+        if (isMoreMenu) {
+            toggleSelectMode();
+        } else if (currentView === 'trash' && contextNoteId) {
+            restoreNoteById(contextNoteId);
+        } else if (contextNoteId) {
+            hideContextMenu();
+            openEditModal(contextNoteId);
+        }
+    }
+
+    function ctxDeleteHandler() {
+        if (isMoreMenu) {
+            hideContextMenu();
+            if (isSelectMode) {
+                deleteSelectedNotes();
+            } else if (currentView === 'trash') {
+                emptyTrash();
+            } else {
+                showToast('Elevate Notepad v1.0');
+            }
+        } else if (currentView === 'archive' && contextNoteId) {
+            archiveNoteById(contextNoteId);
+        } else if (contextNoteId) {
+            const id = contextNoteId;
+            hideContextMenu();
+            deleteNoteById(id);
+        }
+    }
+
+    function setContextMenuMode(moreMode) {
+        isMoreMenu = moreMode;
+        if (moreMode) {
+            ctxEdit.innerHTML = isSelectMode
+                ? '<span class="material-symbols-outlined" style="font-size: 20px;">close</span><span>Exit Select</span>'
+                : '<span class="material-symbols-outlined" style="font-size: 20px;">select_all</span><span>Select Notes</span>';
+            if (isSelectMode) {
+                ctxDelete.innerHTML = '<span class="material-symbols-outlined" style="font-size: 20px;">delete</span><span>Delete Selected</span>';
+                ctxDelete.className = 'context-item danger';
+            } else if (currentView === 'trash') {
+                ctxDelete.innerHTML = '<span class="material-symbols-outlined" style="font-size: 20px;">delete_forever</span><span>Empty Trash</span>';
+                ctxDelete.className = 'context-item danger';
+            } else {
+                ctxDelete.innerHTML = '<span class="material-symbols-outlined" style="font-size: 20px;">info</span><span>About Elevate</span>';
+                ctxDelete.className = 'context-item';
+            }
+        } else {
+            if (currentView === 'trash') {
+                ctxEdit.innerHTML = '<span class="material-symbols-outlined" style="font-size: 20px;">restore</span><span>Restore Note</span>';
+                ctxDelete.innerHTML = '<span class="material-symbols-outlined" style="font-size: 20px;">delete_forever</span><span>Delete Forever</span>';
+                ctxDelete.className = 'context-item danger';
+            } else if (currentView === 'archive') {
+                ctxEdit.innerHTML = '<span class="material-symbols-outlined" style="font-size: 20px;">edit</span><span>Edit Note</span>';
+                ctxDelete.innerHTML = '<span class="material-symbols-outlined" style="font-size: 20px;">unarchive</span><span>Unarchive</span>';
+                ctxDelete.className = 'context-item';
+            } else {
+                ctxEdit.innerHTML = '<span class="material-symbols-outlined" style="font-size: 20px;">edit</span><span>Edit Note</span>';
+                ctxDelete.innerHTML = '<span class="material-symbols-outlined" style="font-size: 20px;">delete</span><span>Delete Note</span>';
+                ctxDelete.className = 'context-item danger';
+            }
+        }
+    }
+
+    // More button - opens context menu at button position
+    moreBtn.addEventListener('click', function(e) {
+        const rect = moreBtn.getBoundingClientRect();
+        setContextMenuMode(true);
+        showContextMenu(rect.left - 80, rect.bottom + 4, null);
+    });
+
+    // Hide context menu on click outside and reset to note mode
+    document.addEventListener('click', function(e) {
+        if (!ctxMenu.contains(e.target) && !moreBtn.contains(e.target)) {
+            if (ctxMenu.classList.contains('active')) {
+                setContextMenuMode(false);
+            }
+        }
+    });
+
+    // ─── TOAST ───────────────────────────────────────────────────────────
+    let toastTimer = null;
+
+    function showToast(message) {
+        const existing = document.querySelector('.toast-notification');
+        if (existing) existing.remove();
+        
+        const toast = document.createElement('div');
+        toast.className = 'toast-notification';
+        toast.textContent = message;
+        Object.assign(toast.style, {
+            position: 'fixed',
+            bottom: '90px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            background: '#1b1c1a',
+            color: '#FFFFFF',
+            padding: '12px 24px',
+            borderRadius: '12px',
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: '13px',
+            fontWeight: '500',
+            boxShadow: '0 4px 20px rgba(0,0,0,0.15)',
+            zIndex: '200',
+            opacity: '0',
+            transition: 'opacity 0.2s ease',
+            maxWidth: '90%',
+            textAlign: 'center'
+        });
+        
+        document.body.appendChild(toast);
+        
+        requestAnimationFrame(() => {
+            toast.style.opacity = '1';
+        });
+        
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+            toast.style.opacity = '0';
+            setTimeout(() => toast.remove(), 200);
+        }, 2000);
+    }
+
+    // ─── INIT ────────────────────────────────────────────────────────────
+    function init() {
+        notes = loadNotes();
+        currentSortIndex = loadSortIndex();
+        currentView = loadView();
+        
+        // Ensure all notes have stickingStyleId
+        notes = notes.map((n, idx) => ({
+            ...normalizeNote(n),
+            stickingStyleId: n.stickingStyleId || getStickingStyleId(idx)
+        }));
+        saveNotes(notes);
+        
+        renderNotes();
+    }
+
+    // Wait for DOM and fonts
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+
+})();
+</script>
+</body>
+</html>

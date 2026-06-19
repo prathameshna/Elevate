@@ -12,7 +12,7 @@ class NotepadWebPage extends StatefulWidget {
 }
 
 class _NotepadWebPageState extends State<NotepadWebPage> {
-  late InAppWebViewController _webViewController;
+  InAppWebViewController? _webViewController;
   bool _isLoading = true;
   double _progress = 0.0;
 
@@ -49,49 +49,50 @@ class _NotepadWebPageState extends State<NotepadWebPage> {
             icon: const Icon(Icons.refresh_rounded, color: AppTheme.textPrimary),
             onPressed: () {
               HapticFeedback.selectionClick();
-              _webViewController.reload();
+              _webViewController?.reload();
             },
           ),
         ],
       ),
       body: Stack(
         children: [
-          InAppWebView(
-            initialUrlRequest: URLRequest(
-              url: WebUri('file:///C:/Users/Prath/OneDrive/Desktop/Elevate/opencodestore/notecode.html'),
+          if (InAppWebViewPlatform.instance == null)
+            const SizedBox.shrink()
+          else
+            InAppWebView(
+              initialFile: 'opencodestore/notecode.html',
+              initialSettings: InAppWebViewSettings(
+                javaScriptEnabled: true,
+                javaScriptCanOpenWindowsAutomatically: true,
+                supportZoom: true,
+                cacheEnabled: true,
+                allowFileAccessFromFileURLs: true,
+                allowUniversalAccessFromFileURLs: true,
+                allowFileAccess: true,
+                useHybridComposition: true,
+              ),
+              onWebViewCreated: (controller) {
+                _webViewController = controller;
+              },
+              onLoadStart: (controller, url) {
+                setState(() {
+                  _isLoading = true;
+                });
+              },
+              onLoadStop: (controller, url) {
+                setState(() {
+                  _isLoading = false;
+                });
+              },
+              onProgressChanged: (controller, progress) {
+                setState(() {
+                  _progress = progress / 100;
+                });
+              },
+              onConsoleMessage: (controller, consoleMessage) {
+                debugPrint('WebView console: ${consoleMessage.message}');
+              },
             ),
-            initialSettings: InAppWebViewSettings(
-              javaScriptEnabled: true,
-              javaScriptCanOpenWindowsAutomatically: true,
-              supportZoom: true,
-              cacheEnabled: true,
-              allowFileAccessFromFileURLs: true,
-              allowUniversalAccessFromFileURLs: true,
-              allowFileAccess: true,
-              useHybridComposition: true,
-            ),
-            onWebViewCreated: (controller) {
-              _webViewController = controller;
-            },
-            onLoadStart: (controller, url) {
-              setState(() {
-                _isLoading = true;
-              });
-            },
-            onLoadStop: (controller, url) {
-              setState(() {
-                _isLoading = false;
-              });
-            },
-            onProgressChanged: (controller, progress) {
-              setState(() {
-                _progress = progress / 100;
-              });
-            },
-            onConsoleMessage: (controller, consoleMessage) {
-              debugPrint('WebView console: ${consoleMessage.message}');
-            },
-          ),
           if (_isLoading)
             LinearProgressIndicator(
               value: _progress,
